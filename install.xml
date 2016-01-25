@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin name="claim_listing">
+	<title>Claim Listing</title>
+	<summary>Allows to assign ownership for listings</summary>
+	<author>Intelliants LLC</author>
+	<contributor>Intelliants LLC</contributor>
+	<version>1.0.0</version>
+	<date>2015-03-12</date>
+	<compatibility>3.3</compatibility>
+
+	<adminpages>
+		<page group="extensions" name="claim_listing" order="50" url="claims/" menus="menu">Listing Claims</page>
+	</adminpages>
+
+	<pages>
+		<page name="claim_listing" url="claim/" readonly="1">Claim Listing</page>
+	</pages>
+
+	<phrases>
+		<phrase category="admin" key="approve_this_claim">Approve this claim</phrase>
+		<phrase category="admin" key="back">Back</phrase>
+		<phrase category="admin" key="claim_approval_email">Automatic approval using email confirmation code</phrase>
+		<phrase category="admin" key="claim_approval_ftp">Approval by placing a specified file to the host</phrase>
+		<phrase category="admin" key="claim_approval_manual">Manual approval of the claim</phrase>
+		<phrase category="admin" key="claim_details">Claim Details</phrase>
+		<phrase category="admin" key="do_you_want_to_approve_claim">Do you really want to approve this claim? Take a note that by doing it, you are changing the owner of the listing.</phrase>
+		<phrase category="admin" key="job_title">Job Title</phrase>
+		<phrase category="admin" key="initiator">Initiator</phrase>
+		<phrase category="admin" key="notes">Notes</phrase>
+		<phrase category="admin" key="phone">Phone</phrase>
+		<phrase category="admin" key="visitor_info">Visitor Info</phrase>
+
+		<phrase category="frontend" key="check">Check</phrase>
+		<phrase category="frontend" key="checking">Checking…</phrase>
+		<phrase category="frontend" key="choose_option">Choose option:</phrase>
+		<phrase category="frontend" key="claim">Claim</phrase>
+		<phrase category="frontend" key="claim_email_submission_confirmation">Send an email as I have an access to this address and wish to own the listing.</phrase>
+		<phrase category="frontend" key="claim_listing">Claim Listing</phrase>
+		<phrase category="frontend" key="claim_option_email">Approve by matching emails of the user and listing</phrase>
+		<phrase category="frontend" key="claim_option_email_description">Your request will be approved automatically in case you have an access to the email address specified in this listing.</phrase>
+		<phrase category="frontend" key="claim_option_ftp">Approve by placing the file to the root folder of the website</phrase>
+		<phrase category="frontend" key="claim_option_ftp_description">We will ask you to place a file with the specific name into the root folder of the site</phrase>
+		<phrase category="frontend" key="claim_option_manual">Manually approve by site administration</phrase>
+		<phrase category="frontend" key="claim_option_manual_description">Your request will be manually reviewed by the site administration.</phrase>
+		<phrase category="frontend" key="confirmation_link_email">&lt;p&gt;We are about to sent an email with the confirmation code to the email address &lt;strong&gt;:email&lt;/strong&gt;. If you own this email, you will be able to use the approval link.&lt;/p&gt;</phrase>
+		<phrase category="frontend" key="confirmation_link_sent_with_email">Confirmation link has been sent to email &lt;strong&gt;:email&lt;/strong&gt;.</phrase>
+		<phrase category="frontend" key="director">Director</phrase>
+		<phrase category="frontend" key="empty_field_notice">Please, fill this field.</phrase>
+		<phrase category="frontend" key="extra_edirects_error">Extra redirects detected.</phrase>
+		<phrase category="frontend" key="ftp_claim_instructions">Please place an empty file named as in the box above and make it accessible via HTTP.</phrase>
+		<phrase category="frontend" key="http_status_error">HTTP status error (:code).</phrase>
+		<phrase category="frontend" key="manager">Manager</phrase>
+		<phrase category="frontend" key="owner">Owner</phrase>
+		<phrase category="frontend" key="ownership_changed">Ownership of this listing successfully changed.</phrase>
+		<phrase category="frontend" key="partner">Partner</phrase>
+		<phrase category="frontend" key="remote_file_is_not_empty">File is not empty (:bytes bytes).</phrase>
+		<phrase category="frontend" key="remote_file_validation_success">URL is validating correctly.</phrase>
+		<phrase category="frontend" key="send_confirmation_email">Send confirmation email</phrase>
+		<phrase category="frontend" key="sign_in_to_use_this_feature">You need to be signed in to use this feature</phrase>
+		<phrase category="frontend" key="staff_member">Staff Member</phrase>
+		<phrase category="frontend" key="telephone_number">Telephone number</phrase>
+		<phrase category="frontend" key="unable_to_approve_listing">Unable to approve the listing.</phrase>
+		<phrase category="frontend" key="unable_to_use_email_claim">Unable to use email approval method as no email set for this listing.</phrase>
+		<phrase category="frontend" key="url_to_be_checked">URL to be checked:</phrase>
+		<phrase category="frontend" key="you_are">You are</phrase>
+		<phrase category="frontend" key="your_email">Your e-mail</phrase>
+		<phrase category="frontend" key="your_name">Your name</phrase>
+		<phrase category="frontend" key="your_request_saved">Your request saved and will be reviewed by the site administration. Thanks.</phrase>
+	</phrases>
+
+	<configgroup name="claim_listing">Claim Listing</configgroup>
+	<config group="claim_listing" type="divider">General</config>
+	<config group="claim_listing" name="cl_enable_ftp_approval" type="radio" values="1,0" description="Enable approval by FTP file upload">1</config>
+	<config group="claim_listing" name="cl_enable_email_approval" type="radio" values="1,0" description="Enable approval by emails match">1</config>
+	<config group="email_templates" type="divider" description="Claim Listing"><![CDATA[]]></config>
+	<config group="email_templates" type="radio" name="ownership_email_approval" values="1,0" description="Listing ownership approval email">1</config>
+	<config group="email_templates" type="hidden" name="ownership_email_approval_subject">Confirm ownership</config>
+	<config group="email_templates" type="hidden" name="ownership_email_approval_body" values="url|Approval link,email|Listing email">
+		<![CDATA[
+<p>Greetings,</p>
+<p>Someone requested the ownership of listing submitted with the email {%EMAIL%}.</p>
+<p>If you didn't do it, just ignore this email.</p>
+
+<p>In order to become an owner of this listing, please proceed with the link: <a href="{%URL%}" target="_blank">{%URL%}</a>.
+		]]>
+	</config>
+	<config group="email_templates" type="radio" name="claim_approved" values="1,0" description="Claim approval notification email">1</config>
+	<config group="email_templates" type="hidden" name="claim_approved_subject">Your claim was approved</config>
+	<config group="email_templates" type="hidden" name="claim_approved_body" values="listing_url|URL of claimed listing,listing_title|Title of claimed listing">
+		<![CDATA[
+<p>Greetings,</p>
+<p>Site administration has approved your claim request on the listing <a href="{%LISTING_URL%}" target="_blank">{%LISTING_TITLE%}</a>.</p>
+<p>You may now sign in to your account and edit the listing's data.</p>
+		]]>
+	</config>
+
+	<tooltips>
+		<tooltip key="cl_enable_ftp_approval">Enables the option to approve the claim by uploading a specific file to the website's root.</tooltip>
+		<tooltip key="cl_enable_email_approval">Enables the option to approve the claim using the confirmation code sent to an email specified for listing.</tooltip>
+	</tooltips>
+
+	<hooks>
+		<hook name="phpViewListingBeforeStart" page_type="front" filename="plugins/claim_listing/includes/hook.view-listing.php"><![CDATA[]]></hook>
+		<hook name="smartyViewListingBeforeFooter" type="smarty" page_type="front" filename="plugins/claim_listing/templates/front/hook.view-listing.tpl"><![CDATA[]]></hook>
+	</hooks>
+
+	<install>
+		<sql>
+		<![CDATA[
+CREATE TABLE IF NOT EXISTS `{prefix}claims` (
+	`id` int(9) unsigned NOT NULL auto_increment,
+	`date` datetime NOT NULL,
+	`ip` bigint(12) NOT NULL,
+	`member_id` int(11) unsigned NOT NULL,
+	`item` varchar(40) NOT NULL,
+	`item_id` int(11) unsigned NOT NULL,
+	`item_title` tinytext NOT NULL,
+	`item_url` tinytext NOT NULL,
+	`type` enum('manual', 'email', 'ftp') NOT NULL default 'manual',
+	`status` enum('pending', 'canceled', 'approved') NOT NULL default 'pending',
+	`name` varchar(60) default NULL,
+	`email` varchar(60) default NULL,
+	`phone` varchar(16) default NULL,
+	`job_title` varchar(20) default NULL,
+	`notes` tinytext default NULL,
+	PRIMARY KEY (`id`)
+) {mysql_version};
+		]]>
+		</sql>
+		<sql>
+			<![CDATA[
+CREATE TABLE IF NOT EXISTS `{prefix}claim_pending_email_keys` (
+	`id` int(9) unsigned NOT NULL auto_increment,
+	`date` datetime NOT NULL,
+	`item` varchar(40) NOT NULL,
+	`item_id` int(11) unsigned NOT NULL,
+	`key` varchar(10) NOT NULL,
+	`member_id` int(11) unsigned NOT NULL,
+	PRIMARY KEY (`id`),
+	UNIQUE `UNIQUE` (`item`, `item_id`)
+) {mysql_version};
+		]]>
+		</sql>
+		<sql>
+			<![CDATA[
+CREATE TABLE IF NOT EXISTS `{prefix}claim_pending_ftp_filenames` (
+	`id` int(9) unsigned NOT NULL auto_increment,
+	`date` datetime NOT NULL,
+	`url` varchar(255) NOT NULL,
+	`filename` varchar(35) NOT NULL,
+	PRIMARY KEY (`id`),
+	UNIQUE `UNIQUE` (`url`(255))
+) {mysql_version};
+		]]>
+		</sql>
+	</install>
+
+	<uninstall>
+		<sql>
+		<![CDATA[
+DROP TABLE IF EXISTS `{prefix}claims`, `{prefix}claim_pending_email_keys`, `{prefix}claim_pending_ftp_filenames`;
+		]]>
+		</sql>
+	</uninstall>
+</plugin>
