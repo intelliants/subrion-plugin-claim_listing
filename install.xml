@@ -4,9 +4,9 @@
 	<summary>Allows to assign ownership for listings</summary>
 	<author>Intelliants LLC</author>
 	<contributor>Intelliants LLC</contributor>
-	<version>1.0.0</version>
-	<date>2015-03-12</date>
-	<compatibility>3.3</compatibility>
+	<version>1.1.0</version>
+	<date>2016-02-02</date>
+	<compatibility>4.0.4</compatibility>
 
 	<adminpages>
 		<page group="extensions" name="claim_listing" order="50" url="claims/" menus="menu">Listing Claims</page>

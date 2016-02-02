@@ -7,7 +7,7 @@ $(function()
 		var type = $('option:selected', this).val();
 
 		$('.js-options, #js-cl-option-descriptions > span').hide();
-		$('.js-option-' + type + ', span[data-type="' + type + '"]').show();
+		$('.js-option-' + type + ', span[data-type="' + type + '"]').removeClass('hide').show();
 	});
 
 	$('input', '.js-option-manual').on('change', function()
@@ -43,7 +43,7 @@ $(function()
 				if (response.result)
 				{
 					$box.removeClass('alert-danger').addClass('alert-success');
-					$btnClaim.show();
+					$btnClaim.removeClass('hide').show();
 				}
 				else
 				{
