@@ -5,8 +5,8 @@
 	<author>Intelliants LLC</author>
 	<contributor>Intelliants LLC</contributor>
 	<version>1.1.0</version>
-	<date>2016-02-02</date>
-	<compatibility>4.0.4</compatibility>
+	<date>2016-03-10</date>
+	<compatibility>4.0.5</compatibility>
 
 	<adminpages>
 		<page group="extensions" name="claim_listing" order="50" url="claims/" menus="menu">Listing Claims</page>
