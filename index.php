@@ -160,7 +160,7 @@ if (iaView::REQUEST_JSON == $iaView->getRequestType())
 			'member_id' => iaUsers::getIdentity()->id,
 			'item' => $itemName,
 			'item_id' => $itemId,
-			'item_title' => $itemData['title'],
+			'item_title' => $itemData['title'] ? $itemData['title'] : $itemData['venue_title'],
 			'item_url' => $itemUrl,
 			'type' => $_POST['type'],
 			'status' => 'pending',
