@@ -120,4 +120,4 @@
 		{/if}
 	</form>
 </div>
-<script type="text/javascript" src="plugins/claim_listing/js/form.js"></script>
+<script type="text/javascript" src="{$smarty.const.IA_CLEAR_URL}plugins/claim_listing/js/form.js"></script>
