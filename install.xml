@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<plugin name="claim_listing">
+<module type="plugin" name="claim_listing">
     <title>Claim Listing</title>
     <summary>Allows to assign ownership for listings</summary>
     <author>Intelliants LLC</author>
     <contributor>Intelliants LLC</contributor>
     <version>2.0.0</version>
     <date>2017-10-31</date>
-    <compatibility>4.2.0</compatibility>
+    <compatibility>4.2</compatibility>
 
     <adminpages>
         <page group="extensions" name="claim_listing" order="50" url="claims/" menus="menu">Listing Claims</page>
@@ -167,4 +167,4 @@ DROP TABLE IF EXISTS `{prefix}claims`, `{prefix}claim_pending_email_keys`, `{pre
         ]]>
         </sql>
     </uninstall>
-</plugin>
+</module>
