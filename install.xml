@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `{prefix}claim_pending_ftp_filenames` (
   `url` varchar(255) NOT NULL,
   `filename` varchar(35) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE `UNIQUE` (`url`(255))
+  UNIQUE `UNIQUE` (`url`(100))
 ) {mysql_version};
         ]]>
         </sql>
