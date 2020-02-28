@@ -84,10 +84,8 @@ class iaBackendController extends iaAbstractControllerModuleBackend
         $iaItem = $this->_iaCore->factory('item');
 
 
-        $result = (bool)$this->_iaDb->update(
-            ['member_id' => $claim['member_id']],
-            iaDb::convertIds($claim['item_id']),
-            null, $iaItem->getItemTable($claim['item']));
+        $result = $this->_iaDb->update(['member_id' => $claim['member_id']],
+            iaDb::convertIds($claim['item_id']), null, $iaItem->getItemTable($claim['item']));
 
         $this->_iaDb->update(['status' => 'approved'], iaDb::convertIds($claim['id']));
 
