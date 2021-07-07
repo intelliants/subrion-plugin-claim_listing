@@ -25,7 +25,7 @@ $(function(){
 
         $btnCheck.button('loading');
 
-        intelli.post(intelli.config.ia_url + 'claim/read.json',
+        intelli.post(intelli.config.baseurl + 'claim/read.json',
             {action: 'url', url: url, filename: $('.js-check-filename', $claimModal).val()},
             function(response){
                 var $box = $('.js-url-check-box', $claimModal),
